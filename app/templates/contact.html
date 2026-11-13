@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article class="content-article">
+  <h1 class="article-title">Contact & Security Disclosure</h1>
+  <div class="article-meta">Community Feedback & Responsible Disclosure</div>
+
+  <p>
+    We welcome feedback from developers, security researchers, and everyday users. Whether you noticed that a shortlink provider has updated their redirect mechanisms or you want to suggest a new service adapter, your contributions help keep the resolution engine accurate and reliable.
+  </p>
+
+  <h2>Report a Broken Provider</h2>
+  <p>
+    URL shorteners frequently change their DOM structures, query parameters, or intermediate redirect pages. If an adapter in our <a href="/supported-services" style="color: var(--primary);">Supported Providers list</a> is failing or reporting inaccurate results, please report:
+  </p>
+  <ul>
+    <li>The shortlink provider name (e.g. Bitly, MediaFire, TinyURL).</li>
+    <li>An example shortened URL that failed (ensure it does not contain private or personal information).</li>
+    <li>The expected destination versus the returned error.</li>
+  </ul>
+
+  <h2>Security & Vulnerability Disclosure</h2>
+  <p>
+    We treat security with the utmost urgency. If you discover a potential Server-Side Request Forgery (SSRF) bypass, DNS rebinding loophole, denial-of-service vector, or any other vulnerability:
+  </p>
+  <ul>
+    <li>Please practice responsible disclosure by contacting our security team before publishing any exploit details.</li>
+    <li>Provide detailed reproduction steps and affected URL patterns.</li>
+    <li>We will investigate and deploy mitigations promptly.</li>
+  </ul>
+
+  <h2>Get in Touch</h2>
+  <div style="background-color: var(--bg-subtle); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); margin-top: 1.5rem;">
+    <p style="margin-bottom: 0.5rem;"><strong>Security & Support Email:</strong></p>
+    <p style="font-family: var(--font-mono); font-size: 1rem; color: var(--primary);">security@shortlink-bypasser.example</p>
+    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem; margin-bottom: 0;">
+      Response turnaround is typically within 24 to 48 business hours.
+    </p>
+  </div>
+</article>
+{% endblock %}
+

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page_title }} | {{ app_name }}</title>
+  <meta name="description" content="{{ page_description }}">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{ site_url }}{{ request.url.path }}">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/static/images/favicon.svg">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ site_url }}{{ request.url.path }}">
+  <meta property="og:title" content="{{ page_title }} | {{ app_name }}">
+  <meta property="og:description" content="{{ page_description }}">
+  <meta property="og:site_name" content="{{ app_name }}">
+  <meta property="og:image" content="{{ site_url }}/static/images/favicon.svg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:url" content="{{ site_url }}{{ request.url.path }}">
+  <meta name="twitter:title" content="{{ page_title }} | {{ app_name }}">
+  <meta name="twitter:description" content="{{ page_description }}">
+  <meta name="twitter:image" content="{{ site_url }}/static/images/favicon.svg">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/static/css/main.css">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "{{ app_name }}",
+    "url": "{{ site_url }}",
+    "description": "{{ app_description }}",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  {% block head_extra %}{% endblock %}
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="/" class="brand-logo" aria-label="{{ app_name }} Homepage">
+        <svg class="brand-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+        </svg>
+        <span>Shortlink Bypasser</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Main Navigation">
+        <a href="/" class="nav-link {% if active_page == 'home' %}active{% endif %}">Resolver</a>
+        <a href="/supported-services" class="nav-link {% if active_page == 'supported' %}active{% endif %}">Providers</a>
+        <a href="/about" class="nav-link {% if active_page == 'about' %}active{% endif %}">About</a>
+        <a href="/privacy" class="nav-link {% if active_page == 'privacy' %}active{% endif %}">Privacy</a>
+
+        <button type="button" class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="theme-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="site-main" id="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <nav class="footer-links" aria-label="Footer Navigation">
+        <a href="/" class="footer-link">Home</a>
+        <a href="/supported-services" class="footer-link">Supported Providers</a>
+        <a href="/about" class="footer-link">About & Architecture</a>
+        <a href="/privacy" class="footer-link">Privacy Policy</a>
+        <a href="/contact" class="footer-link">Contact & Security</a>
+      </nav>
+      <p class="footer-copy">
+        &copy; 2026 {{ app_name }}. Built for privacy, speed, and safety. Stateless & open architecture.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Client Script -->
+  <script src="/static/js/app.js" defer></script>
+</body>
+</html>
+

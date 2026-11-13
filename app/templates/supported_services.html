@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section-header" style="text-align: left; margin-bottom: 2.5rem;">
+  <h1 class="hero-title" style="font-size: 2.25rem;">Supported Providers & Compatibility</h1>
+  <p class="section-desc" style="font-size: 1.05rem; max-width: 800px;">
+    Our resolution engine uses a modular, provider-based architecture. We believe in complete transparency: we never claim universal compatibility, and we clearly specify the operational status and resolution strategy for each supported service.
+  </p>
+</section>
+
+<!-- Notice banner regarding security boundary -->
+<div style="background-color: var(--bg-surface); border: 1px solid var(--border-color); border-left: 4px solid var(--primary); border-radius: var(--radius-sm); padding: 1.15rem 1.35rem; margin-bottom: 2.5rem;">
+  <h2 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 0.35rem;">Security & Compliance Policy</h2>
+  <p style="font-size: 0.925rem; color: var(--text-secondary); line-height: 1.6;">
+    Universal Shortlink Bypasser only resolves links through legitimate, publicly accessible mechanisms. The engine <strong>does not bypass authentication, CAPTCHA challenges, payment requirements, or private access controls</strong>. If a provider activates an interactive human verification challenge or anti-bot barrier, our system accurately returns a <code>blocked</code> status rather than attempting circumvention.
+  </p>
+</div>
+
+<!-- Category A: Traditional -->
+<div style="margin-bottom: 3rem;">
+  <h2 style="font-size: 1.45rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+    <span class="provider-badge traditional">Category A</span> Traditional URL Shorteners
+  </h2>
+  <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.25rem;">
+    Standard redirect services and URL shortening utilities resolved via HTTP header tracing, safe redirect loops checking, and API lookups.
+  </p>
+
+  <div class="providers-table-wrapper">
+    <table class="providers-table">
+      <thead>
+        <tr>
+          <th>Provider</th>
+          <th>Domains</th>
+          <th>Resolution Strategy</th>
+          <th>Compatibility</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for p in providers if p.category.value == 'traditional' %}
+        <tr>
+          <td><strong>{{ p.name }}</strong></td>
+          <td>
+            {% for d in p.domains %}
+              <code style="font-family: var(--font-mono); font-size: 0.825rem; background: var(--bg-subtle); padding: 0.15rem 0.35rem; border-radius: 4px; margin-right: 0.25rem;">{{ d }}</code>
+            {% endfor %}
+          </td>
+          <td>{{ p.resolution_method.value.replace('_', ' ').title() }}</td>
+          <td><span class="compat-tag {{ p.compatibility.value }}">{{ p.compatibility.value.replace('_', ' ').title() }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Category B: Advertising -->
+<div style="margin-bottom: 3rem;">
+  <h2 style="font-size: 1.45rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+    <span class="provider-badge advertising">Category B</span> Advertising & Intermediary Gates
+  </h2>
+  <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.25rem;">
+    Link monetization and unlock gates. Resolved using static parameter decoding and public DOM extraction. Protected links with active CAPTCHA challenges are safely reported as gated.
+  </p>
+
+  <div class="providers-table-wrapper">
+    <table class="providers-table">
+      <thead>
+        <tr>
+          <th>Provider</th>
+          <th>Domains</th>
+          <th>Resolution Strategy</th>
+          <th>Compatibility</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for p in providers if p.category.value == 'advertising' %}
+        <tr>
+          <td><strong>{{ p.name }}</strong></td>
+          <td>
+            {% for d in p.domains %}
+              <code style="font-family: var(--font-mono); font-size: 0.825rem; background: var(--bg-subtle); padding: 0.15rem 0.35rem; border-radius: 4px; margin-right: 0.25rem;">{{ d }}</code>
+            {% endfor %}
+          </td>
+          <td>{{ p.resolution_method.value.replace('_', ' ').title() }}</td>
+          <td><span class="compat-tag {{ p.compatibility.value }}">{{ p.compatibility.value.replace('_', ' ').title() }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Category C: Download Gates -->
+<div style="margin-bottom: 3rem;">
+  <h2 style="font-size: 1.45rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+    <span class="provider-badge download_gate">Category C</span> File Hosting & Download Gates
+  </h2>
+  <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.25rem;">
+    Public file hosting landing pages resolved into direct verified CDN download links with content-type and file-size metadata inspection.
+  </p>
+
+  <div class="providers-table-wrapper">
+    <table class="providers-table">
+      <thead>
+        <tr>
+          <th>Provider</th>
+          <th>Domains</th>
+          <th>Resolution Strategy</th>
+          <th>Compatibility</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for p in providers if p.category.value == 'download_gate' %}
+        <tr>
+          <td><strong>{{ p.name }}</strong></td>
+          <td>
+            {% for d in p.domains %}
+              <code style="font-family: var(--font-mono); font-size: 0.825rem; background: var(--bg-subtle); padding: 0.15rem 0.35rem; border-radius: 4px; margin-right: 0.25rem;">{{ d }}</code>
+            {% endfor %}
+          </td>
+          <td>{{ p.resolution_method.value.replace('_', ' ').title() }}</td>
+          <td><span class="compat-tag {{ p.compatibility.value }}">{{ p.compatibility.value.replace('_', ' ').title() }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Generic Fallback -->
+<div>
+  <h2 style="font-size: 1.45rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+    <span class="provider-badge generic_redirect">Fallback</span> Generic HTTP Redirect Resolver
+  </h2>
+  <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.25rem;">
+    Any URL not handled by a dedicated provider adapter is processed by our Generic HTTP Redirect Resolver, safely checking 301, 302, 307, 308 headers and HTML meta-refresh elements.
+  </p>
+</div>
+{% endblock %}
+

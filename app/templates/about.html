@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article class="content-article">
+  <h1 class="article-title">About Universal Shortlink Bypasser</h1>
+  <div class="article-meta">Published: 2026 &bull; Architecture & Mission</div>
+
+  <p>
+    Shortened URLs and link-gating services have become ubiquitous across social networks, messaging platforms, and forum communities. While useful for saving characters, shortlinks obscure the real destination of a hyperlink, exposing users to malicious redirects, intrusive interstitial advertising networks, invasive tracking cookies, and phishing attacks.
+  </p>
+
+  <p>
+    <strong>Universal Shortlink Bypasser</strong> was engineered to solve this dilemma. Our goal is to provide a fast, secure, lightweight, and privacy-respecting platform that resolves obscure shortlinks back to their genuine destination URLs before you ever have to click on them.
+  </p>
+
+  <h2>Modular Resolution Pipeline</h2>
+  <p>
+    Rather than relying on fragile, monolithic scripts, our engine features a decoupled, provider-based architecture:
+  </p>
+  <ul>
+    <li><strong>URL Normalization & Validation:</strong> Every incoming string is parsed, sanitized, and stripped of fragment leakage. Embedded credentials and invalid network schemes are strictly rejected.</li>
+    <li><strong>Provider Auto-Detection:</strong> Incoming links are matched against our centralized provider registry to identify the optimal resolution adapter.</li>
+    <li><strong>Per-Hop SSRF & DNS Rebinding Defenses:</strong> Before initiating any HTTP request, our network client performs deep DNS resolution and verifies that the target does not resolve to private RFC 1918 networks, loopback addresses, link-local endpoints, or cloud metadata services (e.g., <code>169.254.169.254</code>). This verification is re-evaluated at <em>every single redirect hop</em>.</li>
+    <li><strong>Redirect Loop & Depth Management:</strong> The engine tracks visited URLs, prevents infinite loops, and enforces a strict maximum redirect depth.</li>
+    <li><strong>Safe Content Limits:</strong> Responses are streamed and capped at 2MB to prevent memory exhaustion from decompression bombs or giant binary files.</li>
+  </ul>
+
+  <h2>Strict Security & Ethical Boundaries</h2>
+  <p>
+    Universal Shortlink Bypasser operates with high ethical and legal standards:
+  </p>
+  <ul>
+    <li><strong>No Security Circumvention:</strong> We do not circumvent CAPTCHAs, bot detections (e.g. Cloudflare Turnstile, reCAPTCHA), user authentication gates, or paid access controls. When a link is gated by interactive human verification, the service transparently reports a <code>blocked</code> status.</li>
+    <li><strong>No Arbitrary Script Execution:</strong> The application does not execute untrusted client JavaScript downloaded from 3rd-party websites.</li>
+    <li><strong>Stateless Operation:</strong> We do not store resolved links in any database. The application does not track user identities or sell analytics.</li>
+  </ul>
+
+  <h2>Performance & Lightweight Design</h2>
+  <p>
+    Built with a lightweight stack consisting of Python, FastAPI, and semantic modern CSS, the platform loads virtually instantaneously on mobile and low-end hardware. There are no multi-megabyte JavaScript hydration bundles or ad-tracking scripts.
+  </p>
+</article>
+{% endblock %}
+

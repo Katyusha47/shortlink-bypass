@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article class="content-article">
+  <h1 class="article-title">Privacy Policy</h1>
+  <div class="article-meta">Last Updated: 2026 &bull; Commitment to Complete Privacy</div>
+
+  <p>
+    At <strong>Universal Shortlink Bypasser</strong>, privacy is not an afterthought; it is the foundational architectural pillar of our platform. We believe that inspecting a link should never compromise your anonymity or expose your browsing intentions.
+  </p>
+
+  <h2>1. No Registration or Identity Profiling</h2>
+  <p>
+    You are never required to create an account, log in, or provide an email address to use this service. The platform is completely open and anonymous.
+  </p>
+
+  <h2>2. Zero Persistent URL Storage</h2>
+  <p>
+    We do not operate a persistent database for user-submitted URLs. Once a link is resolved and returned to your browser, it is not archived or tied to any individual user identifier. We do not maintain logs of user query parameters.
+  </p>
+
+  <h2>3. Ephemeral In-Memory Caching</h2>
+  <p>
+    To protect public network infrastructure and deliver sub-millisecond responses for popular shortlinks, our resolution engine maintains a volatile, in-memory LRU (Least Recently Used) cache with a 10-minute Time-To-Live (TTL). This cache is completely in-memory, contains only the target link and resolved destination, and automatically purges old entries.
+  </p>
+
+  <h2>4. Cross-Domain Credential Isolation</h2>
+  <p>
+    During redirect resolution, our safe HTTP client explicitly purges any sensitive HTTP headers—such as <code>Authorization</code>, <code>Cookie</code>, or authentication tokens—whenever a redirect traverses domain boundaries.
+  </p>
+
+  <h2>5. No Tracking Pixels or Third-Party Ads</h2>
+  <p>
+    This website contains:
+  </p>
+  <ul>
+    <li>No Google Analytics, Meta Pixel, or third-party behavioral trackers.</li>
+    <li>No advertising networks or sponsored banner popups.</li>
+    <li>No fingerprinting scripts.</li>
+  </ul>
+
+  <h2>6. Server Logs</h2>
+  <p>
+    Standard web server logs may temporarily record connection metadata (such as IP address and request timestamp) strictly for defending against Distributed Denial of Service (DDoS) attacks and enforcing rate limiting. These ephemeral records are regularly cycled and never shared or sold.
+  </p>
+
+  <h2>7. Contact</h2>
+  <p>
+    If you have any questions or concerns regarding our privacy architecture, please review our <a href="/contact" style="color: var(--primary);">Contact Page</a>.
+  </p>
+</article>
+{% endblock %}
+

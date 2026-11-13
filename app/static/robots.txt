@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Allow: /supported-services
+Allow: /about
+Allow: /privacy
+Allow: /contact
+Disallow: /api/
+
+Sitemap: http://localhost:8000/sitemap.xml
+
