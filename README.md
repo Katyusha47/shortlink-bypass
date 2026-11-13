@@ -186,7 +186,7 @@ Navigate to `http://localhost:8000` in your web browser.
 
 ---
 
-## 🧪 Running Automated Tests
+## Running Automated Tests
 
 Run the full automated test suite with pytest:
 ```bash
