@@ -2,12 +2,6 @@
 
 {% block content %}
 <section class="hero-section">
-  <div class="hero-badge">
-    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-    </svg>
-    <span>Fast &bull; Private &bull; Stateless</span>
-  </div>
   <h1 class="hero-title">
     Resolve Shortlinks <span class="hero-highlight">Instantly & Safely</span>
   </h1>
@@ -45,51 +39,4 @@
     <div id="result-container" aria-live="polite"></div>
   </div>
 </section>
-
-<!-- Features Section -->
-<section class="features-section" aria-label="Key Features">
-  <div class="section-header">
-    <h2 class="section-title">Engineered for Reliability and Security</h2>
-    <p class="section-desc">A transparent, modular resolution pipeline built to protect your privacy.</p>
-  </div>
-
-  <div class="features-grid">
-    <article class="feature-card">
-      <div class="feature-icon-wrapper">
-        <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-        </svg>
-      </div>
-      <h3 class="feature-title">Modular Architecture</h3>
-      <p class="feature-text">
-        Category-based adapters handle traditional shorteners (Bitly, TinyURL, is.gd), advertising redirects (Linkvertise, LootLabs, ouo.io), and file gates (MediaFire, Google Drive, Dropbox).
-      </p>
-    </article>
-
-    <article class="feature-card">
-      <div class="feature-icon-wrapper">
-        <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-        </svg>
-      </div>
-      <h3 class="feature-title">Per-Hop SSRF Protection</h3>
-      <p class="feature-text">
-        Every redirect step is checked against loopback, private RFC 1918 networks, and cloud metadata endpoints with DNS rebinding defenses.
-      </p>
-    </article>
-
-    <article class="feature-card">
-      <div class="feature-icon-wrapper">
-        <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-        </svg>
-      </div>
-      <h3 class="feature-title">Stateless & Blazing Fast</h3>
-      <p class="feature-text">
-        Zero database tracking, no advertising scripts, and no user registration required. Resolution data is processed ephemerally and discarded.
-      </p>
-    </article>
-  </div>
-</section>
 {% endblock %}
-
